@@ -7,7 +7,8 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 const isGitHubPages = process.env.GITHUB_PAGES === "true";
-const githubPagesBase = "/Portfolio-Duarte-Bastos/";
+// Project site is served from /Portfolio-Duarte-Bastos/docs/ while main/root keeps a redirect.
+const githubPagesBase = "/Portfolio-Duarte-Bastos/docs/";
 
 export default defineConfig({
   vite: {
