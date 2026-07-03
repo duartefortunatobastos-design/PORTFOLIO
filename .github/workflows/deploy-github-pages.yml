@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "docs/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build static site for GitHub Pages
+        env:
+          GITHUB_PAGES: "true"
+          GITHUB_PAGES_BASE: "/Portfolio-Duarte-Bastos/"
+        run: npm run build
+
+      - name: Prepare GitHub Pages output
+        run: |
+          if [ ! -f dist/client/index.html ]; then
+            echo "Expected dist/client/index.html was not generated."
+            ls -la dist/client || true
+            exit 1
+          fi
+          cp dist/client/index.html dist/client/404.html
+          cp public/favicon.png dist/client/favicon.png
+          cp public/favicon-16.png dist/client/favicon-16.png
+          cp public/favicon-48.png dist/client/favicon-48.png
+          cp public/apple-touch-icon.png dist/client/apple-touch-icon.png
+          cp public/logo-db.png dist/client/logo-db.png
+          touch dist/client/.nojekyll
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: dist/client
+          force_orphan: true
+          commit_message: "Deploy portfolio site [skip ci]"
