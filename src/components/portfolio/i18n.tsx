@@ -178,7 +178,7 @@ const pt: Dict = {
         description:
           "Portfólio pessoal, com secções de sobre mim, a minha história, projetos, skills e contacto, em PT e EN.",
         tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        liveUrl: "#",
+        liveUrl: "https://duartefortunatobastos-design.github.io/Portfolio-Duarte-Bastos/",
         codeUrl: "https://github.com/duartefortunatobastos-design/Portfolio-Duarte-Bastos",
       },
       {
@@ -338,7 +338,7 @@ const en: Dict = {
         description:
           "Personal portfolio with about me, my story, projects, skills, and contact sections, in PT and EN.",
         tech: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-        liveUrl: "#",
+        liveUrl: "https://duartefortunatobastos-design.github.io/Portfolio-Duarte-Bastos/",
         codeUrl: "https://github.com/duartefortunatobastos-design/Portfolio-Duarte-Bastos",
       },
       {
