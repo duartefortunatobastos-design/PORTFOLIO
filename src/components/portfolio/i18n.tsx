@@ -122,7 +122,8 @@ const pt: Dict = {
     title2: "sou eu",
     paragraphs: [
       "Desenvolvedor em formação, com 18 anos, concluí o 12.º ano no Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos. Desde cedo, tenho vindo a conciliar o interesse pela tecnologia com uma prática desportiva de elevada exigência competitiva.",
-      "Ao longo de mais de uma década de prática em Taekwondo, futebol e atletismo, desenvolvi disciplina, foco e resiliência — competências que procuro aplicar de forma consistente também no desenvolvimento de software.",
+      "Ao longo de mais de uma década de prática em Taekwondo e futebol, desenvolvi disciplina, foco e resiliência — competências que procuro aplicar de forma consistente também no desenvolvimento de software. Para além disso, participo em algumas provas de atletismo às vezes, para matar o gosto de correr, onde já obtive muito bons resultados.",
+      "Paralelamente ao desporto, tenho uma grande paixão pela área da tecnologia e da programação. Interesso-me por áreas como programação, redes, cibersegurança e desenvolvimento de software. Ao longo do curso que tirei nos 3 anos de TGPSSI, adquiri conhecimentos em várias linguagens de programação.",
       "Nos últimos anos, tenho desenvolvido projetos reais para clientes e empresas, incluindo a minha PAP e este portfólio. O objetivo tem sido, não apenas concluir a formação, mas entregar soluções funcionais, com código organizado e impacto concreto.",
       "Atualmente, procuro evoluir numa área que me motiva, articulando a exigência adquirida no desporto com o rigor da engenharia de software — com foco na prática, na aprendizagem contínua e na procura de novos desafios profissionais.",
     ],
@@ -145,7 +146,7 @@ const pt: Dict = {
       {
         year: "Dos 9 anos ao 18 anos",
         title: "Futebol",
-        body: "Iniciei no Atético Clube de Arrentela, onde aprendi o espírito de equipa e vontade de competir ao longo das épocas. Uma paixão enorme por este clube, que foi a minha casa e que levo comigo até hoje.",
+        body: "Passei pelo futebol, onde aprendi dedicação, espírito competitivo e trabalho de equipa.",
       },
       {
         year: "TGPSSI",
@@ -286,7 +287,8 @@ const en: Dict = {
     title2: "I am",
     paragraphs: [
       "I am a developer in training, aged 18, and I have completed the 12th grade in the Professional Course in IT Systems Management and Programming. From an early age, I have sought to combine an interest in technology with a demanding competitive sports background.",
-      "Over more than a decade of practice in taekwondo, football, and athletics, I have developed discipline, focus, and resilience — competencies I aim to apply consistently in software development as well.",
+      "Over more than a decade of practice in taekwondo and football, I have developed discipline, focus, and resilience — competencies I aim to apply consistently in software development as well. I also take part in athletics events from time to time, to satisfy my urge to run, and have already achieved strong results.",
+      "Alongside sport, I have a strong passion for technology and programming. I am interested in areas such as programming, networking, cybersecurity, and software development. Over the three-year TGPSSI course I completed, I gained knowledge in several programming languages.",
       "In recent years, I have developed real projects for clients and companies, including my PAP and this portfolio. My aim has been not only to complete my training, but to deliver functional solutions with well-structured code and tangible impact.",
       "At present, I seek to grow in a field that motivates me, bringing together the standards I developed through sport with the rigour of software engineering — with a focus on practical work, continuous learning, and new professional challenges.",
     ],
@@ -309,7 +311,7 @@ const en: Dict = {
       {
         year: "From age 9 to 18",
         title: "Football",
-        body: "I started football at Atlético Clube de Arrentela, where I learned team spirit and the drive to compete season after season. A deep passion for this club — my home — that I still carry with me today.",
+        body: "I went through football, where I learned dedication, a competitive spirit, and teamwork.",
       },
       {
         year: "TGPSSI",
