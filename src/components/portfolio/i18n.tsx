@@ -37,8 +37,7 @@ type Dict = {
     kicker: string;
     title1: string;
     title2: string;
-    p1: string;
-    p2: string;
+    paragraphs: string[];
     highlightsTitle: string;
     highlights: string[];
     location: { value: string; label: string };
@@ -121,8 +120,12 @@ const pt: Dict = {
     kicker: "Sobre Mim",
     title1: "Quem",
     title2: "sou eu",
-    p1: "O meu nome é Duarte Bastos, tenho 18 anos e conclui o 12º ano no Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos. Desde muito cedo que o desporto faz parte da minha vida. Comecei aos 4 anos no Taekwondo, uma arte marcial originária da Coreia do Sul, onde alcancei resultados de destaque. Sou também detentor do 1.º Dan de Taekwondo. E aos 9 anos iniciei o meu percurso no futebol, modalidade que continuo a praticar até hoje com dedicação e espírito competitivo.",
-    p2: "Para além disso, pratico também atletismo, participando em várias provas onde já conquistei diversos primeiros lugares. Paralelamente ao desporto, tenho uma grande paixão pela área da tecnologia e da programação. Interesso-me por áreas como programação, redes, cibersegurança e desenvolvimento de software. Ao longo do tempo, adquiri conhecimentos em várias linguagens de programação, incluindo PHP, JavaScript, C++, C#, Python, bem como HTML e CSS. Considero-me uma pessoa disciplinada, focada e orientada para objetivos, procurando constantemente evoluir tanto a nível pessoal como profissional. O meu percurso reflete um equilíbrio entre o desporto e a tecnologia, combinando resiliência, dedicação e uma forte vontade de crescer.",
+    paragraphs: [
+      "Desenvolvedor em formação, com 18 anos, concluí o 12.º ano no Curso Profissional de Técnico de Gestão e Programação de Sistemas Informáticos. Desde cedo, tenho vindo a conciliar o interesse pela tecnologia com uma prática desportiva de elevada exigência competitiva.",
+      "Ao longo de mais de uma década de prática em Taekwondo, futebol e atletismo, desenvolvi disciplina, foco e resiliência — competências que procuro aplicar de forma consistente também no desenvolvimento de software.",
+      "Nos últimos anos, tenho desenvolvido projetos reais para clientes e empresas, incluindo a minha PAP e este portfólio. O objetivo tem sido, não apenas concluir a formação, mas entregar soluções funcionais, com código organizado e impacto concreto.",
+      "Atualmente, procuro evoluir numa área que me motiva, articulando a exigência adquirida no desporto com o rigor da engenharia de software — com foco na prática, na aprendizagem contínua e na procura de novos desafios profissionais.",
+    ],
     highlightsTitle: "Destaques",
     highlights: ["18 anos", "Programador", "Atleta"],
     location: { value: "PT", label: "Baseado em Portugal" },
@@ -281,8 +284,12 @@ const en: Dict = {
     kicker: "About Me",
     title1: "Who",
     title2: "I am",
-    p1: "My name is Duarte Bastos, I'm 18 years old and I completed the 12th grade in a Professional Course in IT Systems Management and Programming. Sport has been part of my life from a very young age. I started Taekwondo at 4 — a martial art from South Korea — where I achieved standout results. I also hold a 1st Dan in Taekwondo. And at 9, I began football, a sport I still practice today with dedication and a competitive spirit.",
-    p2: "I also compete in athletics, taking part in various events where I've earned several first-place finishes. Alongside sport, I have a deep passion for technology and programming. I'm interested in programming, networking, cybersecurity, and software development. Over time, I've gained skills in PHP, JavaScript, C++, C#, Python, HTML, and CSS. I consider myself disciplined, focused, and goal-oriented, constantly striving to grow both personally and professionally. My path reflects a balance between sport and technology — resilience, dedication, and a strong drive to improve.",
+    paragraphs: [
+      "I am a developer in training, aged 18, and I have completed the 12th grade in the Professional Course in IT Systems Management and Programming. From an early age, I have sought to combine an interest in technology with a demanding competitive sports background.",
+      "Over more than a decade of practice in taekwondo, football, and athletics, I have developed discipline, focus, and resilience — competencies I aim to apply consistently in software development as well.",
+      "In recent years, I have developed real projects for clients and companies, including my PAP and this portfolio. My aim has been not only to complete my training, but to deliver functional solutions with well-structured code and tangible impact.",
+      "At present, I seek to grow in a field that motivates me, bringing together the standards I developed through sport with the rigour of software engineering — with a focus on practical work, continuous learning, and new professional challenges.",
+    ],
     highlightsTitle: "Highlights",
     highlights: ["18 years old", "Developer", "Athlete"],
     location: { value: "PT", label: "Based in Portugal" },

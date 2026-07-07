@@ -291,12 +291,11 @@ function About() {
           className="!mb-6"
         />
         <div className="space-y-4 text-base leading-relaxed text-white/60 text-pretty sm:text-lg">
-          <FadeIn delay={80}>
-            <p>{t.about.p1}</p>
-          </FadeIn>
-          <FadeIn delay={160}>
-            <p>{t.about.p2}</p>
-          </FadeIn>
+          {t.about.paragraphs.map((paragraph, i) => (
+            <FadeIn key={i} delay={80 + i * 80}>
+              <p>{paragraph}</p>
+            </FadeIn>
+          ))}
         </div>
 
         <FadeIn delay={240}>
