@@ -608,7 +608,7 @@ function Sports() {
   return (
     <section id="sports" className={`${SECTION_Y} ${SECTION_X}`}>
       <div className="mx-auto max-w-7xl">
-        <div className="grid items-center gap-10 sm:gap-12 md:grid-cols-2 md:gap-14 lg:gap-16">
+        <div className="grid items-start gap-10 sm:gap-12 md:grid-cols-2 md:gap-14 lg:gap-16">
           <FadeIn className="flex min-w-0 flex-col">
             <SectionHeader
               kicker={t.sports.kicker}
@@ -621,20 +621,20 @@ function Sports() {
               className="!mb-6 sm:!mb-8"
             />
             <FadeIn delay={200}>
-            <div className="group mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-white/5 sm:max-w-md md:mx-0">
-              <img
-                src={sports1}
-                alt="Duarte Bastos a jogar futebol"
-                loading="lazy"
-                width={768}
-                height={1024}
-                className="aspect-[3/4] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-            </div>
+              <div className="group mx-auto w-full max-w-sm overflow-hidden rounded-2xl border border-white/5 sm:max-w-md md:mx-0">
+                <img
+                  src={sports1}
+                  alt="Duarte Bastos a jogar futebol"
+                  loading="lazy"
+                  width={768}
+                  height={1024}
+                  className="aspect-[3/4] w-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+              </div>
             </FadeIn>
           </FadeIn>
 
-          <div className="flex w-full min-w-0 flex-col justify-center gap-4 sm:gap-5">
+          <div className="flex w-full min-w-0 flex-col gap-4 sm:gap-5 md:mt-36 lg:mt-44">
             {t.sports.categories.map((category, i) => {
               const Icon = SPORT_ICONS[i];
               return (
