@@ -8,27 +8,29 @@ import {
 } from "react";
 import { cn } from "@/lib/utils";
 
-export type FadeAnimation = "animate-fade-up" | "animate-fade-in" | "animate-scale-x-in";
+export type FadeAnimation =
+  | "animate-fade-up"
+  | "animate-fade-in"
+  | "animate-fade-left"
+  | "animate-scale-x-in";
 
 type FadeInProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
   animation?: FadeAnimation;
+  /** Hero only — animates on load. Scroll sections must omit this. */
+  immediate?: boolean;
   as?: ElementType;
 };
 
+/** Hidden states as plain CSS classes (not Tailwind utilities) so they always ship in the build. */
 const hiddenClass: Record<FadeAnimation, string> = {
-  "animate-fade-up": "opacity-0 translate-y-6",
-  "animate-fade-in": "opacity-0 translate-y-6",
-  "animate-scale-x-in": "scale-x-0 opacity-0",
+  "animate-fade-up": "fade-hidden-up",
+  "animate-fade-in": "fade-hidden-in",
+  "animate-fade-left": "fade-hidden-left",
+  "animate-scale-x-in": "fade-hidden-scale-x",
 };
-
-function isInViewport(node: Element, threshold = 0.15) {
-  const rect = node.getBoundingClientRect();
-  const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-  return visibleHeight >= rect.height * threshold || rect.top < window.innerHeight * 0.92;
-}
 
 /** Scroll-triggered fade — same pattern as the ASAPOL site. */
 export function FadeIn({
@@ -36,12 +38,18 @@ export function FadeIn({
   className,
   delay = 0,
   animation = "animate-fade-up",
+  immediate = false,
   as: Tag = "div",
 }: FadeInProps) {
   const ref = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(immediate);
 
   useEffect(() => {
+    if (immediate) {
+      setVisible(true);
+      return;
+    }
+
     const node = ref.current;
     if (!node) return;
 
@@ -63,29 +71,16 @@ export function FadeIn({
     );
 
     observer.observe(node);
-
-    // Prerendered GitHub Pages: hero items are already in view before IO fires.
-    const checkNow = () => {
-      if (isInViewport(node)) reveal();
-    };
-
-    checkNow();
-    requestAnimationFrame(checkNow);
-    window.addEventListener("load", checkNow, { once: true });
-
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("load", checkNow);
-    };
-  }, []);
+    return () => observer.disconnect();
+  }, [immediate]);
 
   const style: CSSProperties | undefined = visible ? { animationDelay: `${delay}ms` } : undefined;
 
   return (
     <Tag
       ref={ref}
-      className={cn(className, visible ? animation : hiddenClass[animation])}
       style={style}
+      className={cn(className, visible ? animation : hiddenClass[animation])}
     >
       {children}
     </Tag>

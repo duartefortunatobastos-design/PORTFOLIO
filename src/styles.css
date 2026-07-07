@@ -115,6 +115,16 @@
     opacity: 1;
   }
 }
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 @keyframes scale-x-in {
   from {
     transform: scaleX(0);
@@ -160,6 +170,9 @@
 }
 @utility animate-fade-in {
   animation: fade-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@utility animate-fade-left {
+  animation: fade-left 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @utility animate-scale-x-in {
   animation: scale-x-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -215,6 +228,40 @@
 }
 .reveal-visible .reveal-line {
   transform: scaleX(1);
+}
+
+/* ── ASAPOL-style hidden states (always in CSS bundle) ── */
+.fade-hidden-up {
+  opacity: 0;
+  transform: translateY(24px);
+}
+.fade-hidden-in {
+  opacity: 0;
+}
+.fade-hidden-left {
+  opacity: 0;
+  transform: translateX(-24px);
+}
+.fade-hidden-scale-x {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ── Scroll reveal system ── */
+.scroll-section {
+  transition:
+    opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.scroll-section-hidden {
+  opacity: 0;
+  transform: translateY(48px);
+}
+.scroll-section-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes shimmer {
@@ -331,7 +378,11 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .reveal-visible {
+  .reveal-visible,
+  .fade-hidden-up,
+  .fade-hidden-in,
+  .fade-hidden-left,
+  .fade-hidden-scale-x {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
@@ -339,6 +390,7 @@
   }
   .animate-fade-up,
   .animate-fade-in,
+  .animate-fade-left,
   .animate-scale-x-in,
   .opacity-0.translate-y-6,
   .scale-x-0.opacity-0,
@@ -358,8 +410,11 @@
 }
 
 @media (scripting: none) {
-  .opacity-0.translate-y-6,
-  .scale-x-0.opacity-0 {
+  .fade-hidden-up,
+  .fade-hidden-in,
+  .fade-hidden-left,
+  .fade-hidden-scale-x,
+  .opacity-0.translate-y-6 {
     opacity: 1 !important;
     transform: none !important;
   }

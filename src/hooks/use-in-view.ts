@@ -4,35 +4,33 @@ type UseInViewOptions = {
   threshold?: number;
   rootMargin?: string;
   once?: boolean;
+  /** Reveal on mount (hero only). Scroll sections must leave this false. */
+  immediate?: boolean;
 };
 
-function isInViewport(node: Element, margin = 80) {
-  const rect = node.getBoundingClientRect();
-  return rect.top <= window.innerHeight - margin && rect.bottom >= margin;
-}
-
 export function useInView<T extends HTMLElement = HTMLDivElement>({
-  threshold = 0.06,
-  rootMargin = "0px 0px -60px 0px",
+  threshold = 0.12,
+  rootMargin = "0px 0px -8% 0px",
   once = true,
+  immediate = false,
 }: UseInViewOptions = {}) {
   const ref = useRef<T>(null);
-  const [inView, setInView] = useState(false);
+  const [inView, setInView] = useState(immediate);
 
   useEffect(() => {
+    if (immediate) {
+      setInView(true);
+      return;
+    }
+
     const node = ref.current;
     if (!node) return;
-
-    if (isInViewport(node)) {
-      setInView(true);
-      if (once) return;
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          if (once) observer.unobserve(node);
+          if (once) observer.disconnect();
         } else if (!once) {
           setInView(false);
         }
@@ -42,7 +40,7 @@ export function useInView<T extends HTMLElement = HTMLDivElement>({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [threshold, rootMargin, once]);
+  }, [threshold, rootMargin, once, immediate]);
 
   return { ref, inView };
 }

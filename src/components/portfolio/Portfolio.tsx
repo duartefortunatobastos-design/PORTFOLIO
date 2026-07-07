@@ -39,17 +39,6 @@ const SPORT_ICONS = [Medal, Trophy, Timer];
 const SECTION_Y = "py-20 sm:py-24 md:py-28 lg:py-32";
 const SECTION_X = "px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24";
 
-function ScrollProgress() {
-  const { progress } = useScrollSpy();
-  return (
-    <div
-      className="fixed top-0 left-0 z-[60] h-[2px] bg-gradient-to-r from-brand-primary via-brand-accent to-brand-primary transition-[width] duration-150 ease-out"
-      style={{ width: `${progress}%` }}
-      aria-hidden="true"
-    />
-  );
-}
-
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" fill="currentColor">
@@ -72,7 +61,6 @@ export function Portfolio() {
   return (
     <LangProvider>
       <div className="bg-brand-bg text-foreground font-body min-h-screen overflow-x-hidden">
-        <ScrollProgress />
         <Nav />
         <Hero />
         <About />
@@ -218,7 +206,7 @@ function Hero() {
 
       <div className="mx-auto w-full max-w-7xl pb-20 pt-24 sm:pb-24 sm:pt-28 md:pb-28 md:pt-32">
         <div className="flex flex-col items-center gap-8 text-center sm:gap-10 lg:flex-row lg:items-center lg:gap-16 lg:text-left xl:gap-20">
-          <FadeIn delay={80} className="shrink-0">
+          <FadeIn immediate delay={80} className="shrink-0">
             <img
               src={logo}
               alt="Duarte Bastos logo"
@@ -227,13 +215,13 @@ function Hero() {
           </FadeIn>
 
           <div className="w-full max-w-4xl">
-            <FadeIn delay={160}>
+            <FadeIn immediate delay={160}>
               <h1 className="font-display text-[clamp(2.5rem,10vw,7rem)] font-bold leading-[0.92] tracking-[-0.045em] text-white text-shimmer">
                 {t.hero.name}
               </h1>
             </FadeIn>
 
-            <FadeIn delay={240}>
+            <FadeIn immediate delay={240}>
               <p className="mt-5 font-display text-base font-medium leading-snug tracking-[-0.02em] text-white/90 sm:mt-6 sm:text-lg md:mt-8 md:text-2xl lg:text-[1.75rem]">
                 <span className="block sm:inline">{t.hero.tagline1}</span>
                 <span className="mx-0 my-2 hidden text-white/25 sm:mx-3 sm:inline sm:my-0">|</span>
@@ -241,14 +229,14 @@ function Hero() {
               </p>
             </FadeIn>
 
-            <FadeIn delay={320}>
+            <FadeIn immediate delay={320}>
               <div className="mx-auto mt-6 max-w-xl space-y-1 text-sm leading-relaxed text-white/45 sm:mt-8 sm:text-base md:text-lg lg:mx-0">
                 <p>{t.hero.desc1}</p>
                 <p>{t.hero.desc2}</p>
               </div>
             </FadeIn>
 
-            <FadeIn delay={400}>
+            <FadeIn immediate delay={400}>
               <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
               <a
                 href="#work"
@@ -318,24 +306,24 @@ function About() {
             </p>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
               {t.about.highlights.map((item, i) => (
-                <div
-                  key={item}
-                  className="glass-card card-interactive flex min-h-24 flex-col items-center justify-center rounded-xl border border-white/5 px-3 py-4 text-center"
-                  style={{ transitionDelay: `${i * 60}ms` }}
-                >
-                  <span className="font-display text-sm font-bold text-white md:text-base">
-                    {item}
-                  </span>
-                </div>
+                <FadeInItem key={item} index={i} baseDelay={0} step={70}>
+                  <div className="glass-card card-interactive flex min-h-24 flex-col items-center justify-center rounded-xl border border-white/5 px-3 py-4 text-center">
+                    <span className="font-display text-sm font-bold text-white md:text-base">
+                      {item}
+                    </span>
+                  </div>
+                </FadeInItem>
               ))}
-              <div className="glass-card card-interactive flex min-h-24 flex-col items-center justify-center rounded-xl border border-brand-accent/20 bg-brand-accent/5 px-3 py-4 text-center">
-                <div className="font-display text-xl font-bold text-brand-accent md:text-2xl">
-                  {t.about.location.value}
+              <FadeInItem index={t.about.highlights.length} baseDelay={0} step={70}>
+                <div className="glass-card card-interactive flex min-h-24 flex-col items-center justify-center rounded-xl border border-brand-accent/20 bg-brand-accent/5 px-3 py-4 text-center">
+                  <div className="font-display text-xl font-bold text-brand-accent md:text-2xl">
+                    {t.about.location.value}
+                  </div>
+                  <div className="mt-1 text-[10px] uppercase tracking-widest text-white/70">
+                    {t.about.location.label}
+                  </div>
                 </div>
-                <div className="mt-1 text-[10px] uppercase tracking-widest text-white/70">
-                  {t.about.location.label}
-                </div>
-              </div>
+              </FadeInItem>
             </div>
           </div>
         </FadeIn>
@@ -346,13 +334,12 @@ function About() {
               {t.about.valuesTitle}
             </p>
             <div className="flex flex-wrap justify-center gap-3">
-              {t.about.values.map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-brand-accent/20 bg-brand-accent/5 px-5 py-2 text-sm font-medium text-brand-accent backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-brand-accent/40 hover:bg-brand-accent/10"
-                >
-                  {item}
-                </span>
+              {t.about.values.map((item, i) => (
+                <FadeInItem key={item} index={i} baseDelay={0} step={60}>
+                  <span className="rounded-full border border-brand-accent/20 bg-brand-accent/5 px-5 py-2 text-sm font-medium text-brand-accent backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-brand-accent/40 hover:bg-brand-accent/10">
+                    {item}
+                  </span>
+                </FadeInItem>
               ))}
             </div>
           </div>
@@ -569,16 +556,15 @@ function Skills() {
                 {t.skills.languagesLabel}
               </p>
               <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3">
-                {t.skills.tech.map((name) => (
-                  <div
-                    key={name}
-                    className="card-interactive flex w-full min-w-0 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-2.5 py-2.5 sm:gap-2.5 sm:px-3 sm:py-3 md:px-4"
-                  >
-                    <TechLanguageIcon name={name} />
-                    <span className="truncate text-[11px] font-medium text-white/85 sm:text-xs md:text-sm">
-                      {name}
-                    </span>
-                  </div>
+                {t.skills.tech.map((name, i) => (
+                  <FadeInItem key={name} index={i} baseDelay={0} step={60}>
+                    <div className="card-interactive flex w-full min-w-0 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-2.5 py-2.5 sm:gap-2.5 sm:px-3 sm:py-3 md:px-4">
+                      <TechLanguageIcon name={name} />
+                      <span className="truncate text-[11px] font-medium text-white/85 sm:text-xs md:text-sm">
+                        {name}
+                      </span>
+                    </div>
+                  </FadeInItem>
                 ))}
               </div>
             </div>
@@ -595,18 +581,17 @@ function Skills() {
                 {t.skills.learning.map((label, i) => {
                   const Icon = LEARNING_ICONS[i];
                   return (
-                    <div
-                      key={label}
-                      className="glass-card card-interactive group flex items-center gap-4 rounded-2xl p-5"
-                    >
-                      <div className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-accent/20 bg-brand-accent/10 transition-transform duration-500 group-hover:scale-110">
-                        <Icon
-                          className="size-5 animate-float text-brand-accent"
-                          style={{ animationDelay: `${i * 0.8}s` }}
-                        />
+                    <FadeInItem key={label} index={i} baseDelay={0} step={100}>
+                      <div className="glass-card card-interactive group flex items-center gap-4 rounded-2xl p-5">
+                        <div className="grid size-12 shrink-0 place-items-center rounded-xl border border-brand-accent/20 bg-brand-accent/10 transition-transform duration-500 group-hover:scale-110">
+                          <Icon
+                            className="size-5 animate-float text-brand-accent"
+                            style={{ animationDelay: `${i * 0.8}s` }}
+                          />
+                        </div>
+                        <span className="font-display text-lg font-semibold">{label}</span>
                       </div>
-                      <span className="font-display text-lg font-semibold">{label}</span>
-                    </div>
+                    </FadeInItem>
                   );
                 })}
               </div>
@@ -692,27 +677,29 @@ function Contact() {
   return (
     <section id="contact" className={`border-t border-white/5 ${SECTION_Y} ${SECTION_X}`}>
       <div className="mx-auto max-w-7xl">
-        <FadeIn className="min-w-0">
-          <SectionHeader
-            kicker={t.contact.kicker}
-            title={
-              <>
-                {t.contact.title1} <span className="gradient-text">{t.contact.title2}</span>
-              </>
-            }
-            description={t.contact.intro}
-            className="!mb-8 sm:!mb-10"
-          />
+        <SectionHeader
+          kicker={t.contact.kicker}
+          title={
+            <>
+              {t.contact.title1} <span className="gradient-text">{t.contact.title2}</span>
+            </>
+          }
+          description={t.contact.intro}
+          className="!mb-8 sm:!mb-10"
+        />
 
+        <FadeIn delay={240}>
           <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 sm:mb-4">
             {t.contact.linksLabel}
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {socialLinks.map(({ icon: Icon, label, href }) => (
-              <SocialLink key={label} icon={Icon} label={label} href={href} />
-            ))}
-          </div>
         </FadeIn>
+        <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          {socialLinks.map(({ icon: Icon, label, href }, i) => (
+            <FadeInItem key={label} index={i} baseDelay={320} step={100}>
+              <SocialLink icon={Icon} label={label} href={href} />
+            </FadeInItem>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -761,17 +748,18 @@ function Footer() {
               {t.footer.socialLabel}
             </p>
             <div className="flex gap-3">
-              {socialLinks.map(({ icon: Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="grid size-10 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:text-brand-accent hover:shadow-glow"
-                >
-                  <Icon className="size-4" />
-                </a>
+              {socialLinks.map(({ icon: Icon, label, href }, i) => (
+                <FadeInItem key={label} index={i} baseDelay={80} step={80}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="grid size-10 place-items-center rounded-xl border border-white/10 bg-white/[0.03] text-white/70 transition-all hover:-translate-y-0.5 hover:border-brand-accent/40 hover:text-brand-accent hover:shadow-glow"
+                  >
+                    <Icon className="size-4" />
+                  </a>
+                </FadeInItem>
               ))}
             </div>
           </div>

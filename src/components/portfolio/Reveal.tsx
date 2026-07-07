@@ -111,7 +111,7 @@ export function ScrollSection({
       ref={ref}
       id={id}
       className={cn(
-        "scroll-section transition-opacity duration-700",
+        "scroll-section",
         inView ? "scroll-section-visible" : "scroll-section-hidden",
         className,
       )}
