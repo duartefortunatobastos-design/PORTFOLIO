@@ -17,7 +17,6 @@ import { TechLanguageIcon } from "./TechIcons";
 import { FadeIn, FadeInItem } from "./FadeIn";
 import { SectionHeader } from "./SectionHeader";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
-import { cn } from "@/lib/utils";
 import portrait from "@/assets/portrait.png";
 import logo from "@/assets/logo.png";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -266,9 +265,9 @@ function About() {
   return (
     <section
       id="about"
-      className={`mx-auto grid max-w-7xl items-start gap-10 sm:gap-12 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] md:items-center md:gap-14 lg:gap-20 ${SECTION_Y} ${SECTION_X}`}
+      className={`mx-auto grid max-w-7xl items-start gap-10 sm:gap-12 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-14 lg:gap-16 ${SECTION_Y} ${SECTION_X}`}
     >
-      <FadeIn className="mx-auto w-full max-w-md md:mx-0 md:max-w-none md:self-center">
+      <FadeIn className="mx-auto w-full max-w-sm md:mx-0 md:max-w-none md:sticky md:top-28 md:self-start">
         <div className="group relative overflow-hidden rounded-2xl border border-white/5">
           <img
             src={portrait}
@@ -281,7 +280,8 @@ function About() {
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-brand-bg/40 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         </div>
       </FadeIn>
-      <div className="min-w-0 space-y-6 sm:space-y-7">
+
+      <div className="min-w-0 space-y-8">
         <SectionHeader
           kicker={t.about.kicker}
           title={
@@ -291,39 +291,45 @@ function About() {
           }
           className="!mb-0"
         />
-        <div className="relative md:pl-7">
-          <div
-            className="absolute left-0 top-1 hidden h-[calc(100%-0.5rem)] w-px bg-gradient-to-b from-brand-primary/60 via-brand-accent/25 to-transparent md:block"
-            aria-hidden="true"
-          />
-          <div className="space-y-5 sm:space-y-6">
-            {t.about.paragraphs.map((paragraph, i) => (
-              <FadeIn key={i} delay={80 + i * 80}>
-                <p
-                  className={cn(
-                    "text-pretty",
-                    i === 0
-                      ? "text-[1.02rem] font-medium leading-relaxed text-white/80 sm:text-[1.08rem]"
-                      : "text-[0.98rem] leading-[1.85] text-white/58 sm:text-base",
-                    i === t.about.paragraphs.length - 1 && "text-white/68",
-                  )}
-                >
-                  {paragraph}
+
+        <FadeIn delay={80}>
+          <p className="max-w-2xl text-[1.05rem] font-medium leading-relaxed text-white/82 text-pretty sm:text-lg sm:leading-[1.75]">
+            {t.about.lead}
+          </p>
+        </FadeIn>
+
+        <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+          {t.about.blocks.map((block, i) => (
+            <FadeIn key={block.title} delay={120 + i * 80}>
+              <article className="glass-card h-full rounded-2xl border border-white/5 p-5 sm:p-6">
+                <h3 className="mb-3 font-display text-xs font-bold uppercase tracking-[0.22em] text-brand-primary">
+                  {block.title}
+                </h3>
+                <p className="text-sm leading-[1.8] text-white/58 text-pretty sm:text-[0.95rem]">
+                  {block.body}
                 </p>
-              </FadeIn>
-            ))}
-          </div>
+              </article>
+            </FadeIn>
+          ))}
         </div>
 
-        <FadeIn delay={240}>
-          <div className="space-y-3 pt-1">
-            <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">
+        <FadeIn delay={280}>
+          <div className="rounded-2xl border border-brand-accent/15 bg-brand-accent/[0.04] px-5 py-4 sm:px-6 sm:py-5">
+            <p className="text-sm leading-relaxed text-white/72 text-pretty sm:text-[0.98rem] sm:leading-[1.75]">
+              {t.about.closing}
+            </p>
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={360}>
+          <div className="space-y-4 border-t border-white/5 pt-6">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40">
               {t.about.highlightsTitle}
             </p>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-3">
               {t.about.highlights.map((item, i) => (
                 <FadeInItem key={item} index={i} baseDelay={0} step={70}>
-                  <div className="glass-card card-interactive flex min-h-20 flex-col items-center justify-center rounded-xl border border-white/5 px-3 py-3 text-center">
+                  <div className="glass-card card-interactive flex min-h-[4.5rem] flex-col items-center justify-center rounded-xl border border-white/5 px-3 py-3 text-center">
                     <span className="font-display text-sm font-bold text-white md:text-base">
                       {item}
                     </span>
@@ -331,7 +337,7 @@ function About() {
                 </FadeInItem>
               ))}
               <FadeInItem index={t.about.highlights.length} baseDelay={0} step={70}>
-                <div className="glass-card card-interactive flex min-h-20 flex-col items-center justify-center rounded-xl border border-brand-accent/20 bg-brand-accent/5 px-3 py-3 text-center">
+                <div className="glass-card card-interactive flex min-h-[4.5rem] flex-col items-center justify-center rounded-xl border border-brand-accent/20 bg-brand-accent/5 px-3 py-3 text-center">
                   <div className="font-display text-xl font-bold text-brand-accent md:text-2xl">
                     {t.about.location.value}
                   </div>
@@ -344,15 +350,15 @@ function About() {
           </div>
         </FadeIn>
 
-        <FadeIn delay={320}>
+        <FadeIn delay={420}>
           <div className="space-y-3">
-            <p className="text-center text-[10px] font-bold uppercase tracking-[0.3em] text-brand-accent/70">
+            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-accent/70">
               {t.about.valuesTitle}
             </p>
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap gap-2.5">
               {t.about.values.map((item, i) => (
                 <FadeInItem key={item} index={i} baseDelay={0} step={60}>
-                  <span className="rounded-full border border-brand-accent/20 bg-brand-accent/5 px-5 py-2 text-sm font-medium text-brand-accent backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-brand-accent/40 hover:bg-brand-accent/10">
+                  <span className="rounded-full border border-brand-accent/20 bg-brand-accent/5 px-4 py-2 text-sm font-medium text-brand-accent backdrop-blur-sm transition-all duration-300 hover:border-brand-accent/40 hover:bg-brand-accent/10">
                     {item}
                   </span>
                 </FadeInItem>
