@@ -60,7 +60,7 @@ function useSocialLinks() {
 export function Portfolio() {
   return (
     <LangProvider>
-      <div className="bg-brand-bg text-foreground font-body min-h-screen overflow-x-hidden">
+      <div className="bg-brand-bg text-foreground font-body min-h-screen overflow-x-clip">
         <Nav />
         <Hero />
         <About />
@@ -386,7 +386,7 @@ function Story() {
           className="max-w-2xl"
         />
 
-        <ol className="relative ml-2 space-y-10 border-l border-white/10 sm:ml-3 sm:space-y-12">
+        <ol className="relative space-y-10 sm:space-y-12">
           {t.story.items.map((item, i) => (
             <FadeInItem key={`${item.year}-${item.title}`} index={i} baseDelay={80} step={100}>
               <li className="relative pl-6 group sm:pl-8">

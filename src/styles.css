@@ -422,7 +422,8 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* clip (not hidden) avoids a second vertical scrollbar track on html + body */
+  overflow-x: clip;
 }
 
 @layer base {
@@ -434,7 +435,6 @@ html {
     color: var(--color-foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
     text-size-adjust: 100%;
   }
   img,
