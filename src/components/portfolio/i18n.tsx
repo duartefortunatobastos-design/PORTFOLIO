@@ -95,6 +95,60 @@ type Dict = {
   };
   footer: { name: string; rights: string; socialLabel: string };
   toggle: string;
+  cookies: {
+    title: string;
+    descriptionBefore: string;
+    descriptionMiddle: string;
+    privacyLink: string;
+    cookieLink: string;
+    close: string;
+    accept: string;
+  };
+  legal: {
+    backHome: string;
+    privacy: {
+      kicker: string;
+      title: string;
+      subtitle: string;
+      meta: {
+        domain: { label: string; value: string };
+        lastUpdated: { label: string; value: string };
+        owner: { label: string; value: string };
+      };
+      sections: {
+        title: string;
+        intro?: string;
+        bullets?: string[];
+        body?: string;
+        bodyBeforeEmail?: string;
+        bodyAfterEmail?: string;
+        cookiePolicyBefore?: string;
+        cookiePolicyAfter?: string;
+      }[];
+      contactEmail: string;
+      disclaimer: string;
+    };
+    cookies: {
+      kicker: string;
+      title: string;
+      subtitle: string;
+      meta: {
+        domain: { label: string; value: string };
+        lastUpdated: { label: string; value: string };
+        badge: string;
+      };
+      sections: {
+        title: string;
+        intro?: string;
+        bullets?: string[];
+        body?: string;
+        bodyBeforeEmail?: string;
+        bodyAfterEmail?: string;
+      }[];
+      contactEmail: string;
+      disclaimer: string;
+    };
+  };
 };
 
 const pt: Dict = {
@@ -261,6 +315,132 @@ const pt: Dict = {
     socialLabel: "Redes sociais",
   },
   toggle: "EN",
+  cookies: {
+    title: "Privacidade e cookies",
+    descriptionBefore:
+      "Este website utiliza armazenamento essencial e registos básicos de visita para melhorar a segurança e compreender a navegação nas páginas. Consulta a",
+    descriptionMiddle: "e a",
+    privacyLink: "Política de Privacidade",
+    cookieLink: "Política de Cookies",
+    close: "Fechar",
+    accept: "Aceitar",
+  },
+  legal: {
+    backHome: "Voltar ao portfólio",
+    privacy: {
+      kicker: "Legal",
+      title: "Política de Privacidade",
+      subtitle: "Como a DB13 recolhe, utiliza e protege os dados básicos do website.",
+      meta: {
+        domain: { label: "Domínio", value: "db13porfolio.pt" },
+        lastUpdated: { label: "Última atualização", value: "15 de julho de 2026" },
+        owner: { label: "Proprietário", value: "Duarte Bastos" },
+      },
+      contactEmail: "duartefortunatobastos@gmail.com",
+      sections: [
+        {
+          title: "1. Quem somos",
+          bodyBeforeEmail:
+            "Este website é operado pela DB13 Website Desenvoloper / DB13 Server Solutions, gerida por Duarte Bastos. Pode contactar-nos através do e-mail ",
+          bodyAfterEmail: ".",
+        },
+        {
+          title: "2. Que dados podemos recolher",
+          intro:
+            "Quando visita este website, podemos recolher informações técnicas básicas necessárias para fins de segurança, análise e melhoria do website, incluindo:",
+          bullets: [
+            "Página visitada e data/hora da visita;",
+            "Endereço IP e informação aproximada de localização técnica;",
+            "Navegador (browser), tipo de dispositivo, sistema operativo e user agent;",
+            "Idioma, fuso horário, tamanho do ecrã e página de origem (referrer);",
+            "Um identificador anónimo de visitante, utilizado para compreender a navegação nas páginas.",
+          ],
+        },
+        {
+          title: "3. Porque recolhemos estes dados",
+          body: "Utilizamos estes dados para proteger o website, compreender o tráfego básico, detetar problemas técnicos, melhorar a experiência do utilizador e receber notificações de visitas ao website através de ferramentas internas, tais como registos (logs) do Discord.",
+        },
+        {
+          title: "4. Formulários de contacto e comunicação direta",
+          body: "Se nos contactar por e-mail, Discord, telefone, formulários ou redes sociais, poderemos processar as informações que fornecer voluntariamente, tais como o seu nome, e-mail, nome de utilizador do Discord, conteúdo da mensagem e detalhes do projeto.",
+        },
+        {
+          title: "5. Cookies e armazenamento local",
+          cookiePolicyBefore:
+            "Este website pode utilizar armazenamento estritamente necessário, como preferências de consentimento de cookies e identificadores anónimos de visitante/sessão. Está disponível mais informação na nossa ",
+          cookiePolicyAfter: ".",
+        },
+        {
+          title: "6. Serviços de terceiros",
+          body: "O website pode utilizar serviços de terceiros, como a Netlify para alojamento e webhooks do Discord para notificações internas. Estes serviços podem processar os dados técnicos necessários para disponibilizar as suas funcionalidades.",
+        },
+        {
+          title: "7. Retenção de dados",
+          body: "Os registos técnicos (logs) são mantidos apenas pelo período necessário para fins de segurança, resolução de problemas e melhoria do website. As informações de contacto são guardadas pelo tempo necessário para responder a pedidos ou gerir a comunicação de projetos.",
+        },
+        {
+          title: "8. Os seus direitos",
+          bodyBeforeEmail:
+            "Ao abrigo da legislação aplicável de proteção de dados, pode solicitar o acesso, retificação, eliminação ou limitação do tratamento dos seus dados pessoais. Para efetuar um pedido, contacte-nos através do e-mail ",
+          bodyAfterEmail: ".",
+        },
+        {
+          title: "9. Alterações a esta política",
+          body: "Esta política pode ser atualizada quando o website ou os serviços forem alterados. A versão mais recente estará sempre disponível nesta página.",
+        },
+      ],
+      disclaimer:
+        "Nota: Esta página é um aviso de privacidade prático para o website da DB13. Para validação jurídica formal, consulte um profissional de direito qualificado.",
+    },
+    cookies: {
+      kicker: "Legal",
+      title: "Política de Cookies",
+      subtitle:
+        "Informação sobre cookies, armazenamento local e registos básicos de visitas utilizados neste website.",
+      meta: {
+        domain: { label: "Domínio", value: "db13portfolio.pt" },
+        lastUpdated: { label: "Última atualização", value: "15 de julho de 2026" },
+        badge: "Monitorização mínima",
+      },
+      contactEmail: "duartefortunatobastos@gmail.com",
+      sections: [
+        {
+          title: "1. O que são cookies?",
+          body: "Os cookies e o armazenamento local (local storage) são pequenos fragmentos de informação guardados no seu navegador (browser). Podem ser utilizados para memorizar preferências, melhorar a segurança ou compreender como o website é utilizado.",
+        },
+        {
+          title: "2. O que este website utiliza",
+          intro: "Este website pode utilizar:",
+          bullets: [
+            "Preferência de consentimento de cookies — memoriza que aceitou ou fechou o aviso de privacidade/cookies;",
+            "ID de visitante anónimo — ajuda a identificar a navegação pelas páginas a partir do mesmo navegador, sem recolher o seu nome real;",
+            "ID de sessão — ajuda a compreender as mudanças de página durante a mesma sessão de navegação;",
+            "Registos técnicos (logs) — página visitada, navegador, dispositivo, IP e data/hora para fins de segurança e resolução de problemas.",
+          ],
+        },
+        {
+          title: "3. Cookies essenciais vs. opcionais",
+          body: "O armazenamento estritamente necessário é utilizado para garantir o correto funcionamento do website e memorizar a sua escolha de privacidade. Quaisquer ferramentas opcionais de análise (analytics) ou marketing apenas deverão ser utilizadas após o seu consentimento, sempre que tal for exigido.",
+        },
+        {
+          title: "4. Notificações de visita via Discord",
+          body: "O website pode enviar notificações básicas de visitas para um canal interno do Discord. Estas notificações podem incluir a página visitada, informações do navegador, endereço IP, tipo de dispositivo, fuso horário e um ID anónimo de visitante/sessão.",
+        },
+        {
+          title: "5. Como controlar os cookies",
+          body: "Pode apagar os cookies e o armazenamento local a qualquer momento através das definições do seu navegador. Também pode bloquear os cookies, mas algumas funcionalidades do website poderão não funcionar como esperado.",
+        },
+        {
+          title: "6. Contacto",
+          bodyBeforeEmail:
+            "Se tiver alguma dúvida sobre cookies ou privacidade, contacte-nos através do e-mail ",
+          bodyAfterEmail: ".",
+        },
+      ],
+      disclaimer:
+        "Nota: Este aviso de cookies foi concebido para um website simples de portefólio/negócios. Para total conformidade legal, reveja-o com um profissional de direito qualificado.",
+    },
+  },
 };
 
 const en: Dict = {
@@ -427,6 +607,132 @@ const en: Dict = {
     socialLabel: "Social media",
   },
   toggle: "PT",
+  cookies: {
+    title: "Privacy & cookies",
+    descriptionBefore:
+      "This website uses essential storage and basic visit logs to improve security and understand page navigation. Read the",
+    descriptionMiddle: "and",
+    privacyLink: "Privacy Policy",
+    cookieLink: "Cookie Policy",
+    close: "Close",
+    accept: "Accept",
+  },
+  legal: {
+    backHome: "Back to portfolio",
+    privacy: {
+      kicker: "Legal",
+      title: "Privacy Policy",
+      subtitle: "How DB13 collects, uses, and protects basic website data.",
+      meta: {
+        domain: { label: "Domain", value: "db13porfolio.pt" },
+        lastUpdated: { label: "Last updated", value: "15 July 2026" },
+        owner: { label: "Owner", value: "Duarte Bastos" },
+      },
+      contactEmail: "duartefortunatobastos@gmail.com",
+      sections: [
+        {
+          title: "1. Who we are",
+          bodyBeforeEmail:
+            "This website is operated by DB13 Website Developer / DB13 Server Solutions, managed by Duarte Bastos. You can contact us at ",
+          bodyAfterEmail: ".",
+        },
+        {
+          title: "2. What data we may collect",
+          intro:
+            "When you visit this website, we may collect basic technical information required for security, analytics, and website improvement, including:",
+          bullets: [
+            "Page visited and date/time of the visit;",
+            "IP address and approximate technical location information;",
+            "Browser, device type, operating system, and user agent;",
+            "Language, time zone, screen size, and referrer page;",
+            "An anonymous visitor identifier used to understand page navigation.",
+          ],
+        },
+        {
+          title: "3. Why we collect this data",
+          body: "We use this data to protect the website, understand basic traffic, detect technical issues, improve the user experience, and receive website visit notifications through internal tools such as Discord logs.",
+        },
+        {
+          title: "4. Contact forms and direct communication",
+          body: "If you contact us by email, Discord, phone, forms, or social media, we may process the information you voluntarily provide, such as your name, email, Discord username, message content, and project details.",
+        },
+        {
+          title: "5. Cookies and local storage",
+          cookiePolicyBefore:
+            "This website may use strictly necessary storage, such as cookie consent preferences and anonymous visitor/session identifiers. More information is available in our ",
+          cookiePolicyAfter: ".",
+        },
+        {
+          title: "6. Third-party services",
+          body: "The website may use third-party services such as Netlify for hosting and Discord webhooks for internal notifications. These services may process the technical data required to provide their functionality.",
+        },
+        {
+          title: "7. Data retention",
+          body: "Technical logs are kept only for as long as necessary for security, troubleshooting, and website improvement. Contact information is stored for as long as needed to respond to requests or manage project communication.",
+        },
+        {
+          title: "8. Your rights",
+          bodyBeforeEmail:
+            "Under applicable data protection law, you may request access, rectification, erasure, or restriction of processing of your personal data. To make a request, contact us at ",
+          bodyAfterEmail: ".",
+        },
+        {
+          title: "9. Changes to this policy",
+          body: "This policy may be updated when the website or services change. The latest version will always be available on this page.",
+        },
+      ],
+      disclaimer:
+        "Note: This page is a practical privacy notice for the DB13 website. For formal legal validation, consult a qualified legal professional.",
+    },
+    cookies: {
+      kicker: "Legal",
+      title: "Cookie Policy",
+      subtitle:
+        "Information about cookies, local storage, and basic visit logs used on this website.",
+      meta: {
+        domain: { label: "Domain", value: "db13portfolio.pt" },
+        lastUpdated: { label: "Last updated", value: "15 July 2026" },
+        badge: "Minimal monitoring",
+      },
+      contactEmail: "duartefortunatobastos@gmail.com",
+      sections: [
+        {
+          title: "1. What are cookies?",
+          body: "Cookies and local storage are small pieces of information stored in your browser. They may be used to remember preferences, improve security, or understand how the website is used.",
+        },
+        {
+          title: "2. What this website uses",
+          intro: "This website may use:",
+          bullets: [
+            "Cookie consent preference — remembers that you accepted or closed the privacy/cookie notice;",
+            "Anonymous visitor ID — helps identify page navigation from the same browser without collecting your real name;",
+            "Session ID — helps understand page changes during the same browsing session;",
+            "Technical logs — page visited, browser, device, IP, and date/time for security and troubleshooting purposes.",
+          ],
+        },
+        {
+          title: "3. Essential vs. optional cookies",
+          body: "Strictly necessary storage is used to ensure the website works correctly and to remember your privacy choice. Any optional analytics or marketing tools should only be used after your consent, whenever required.",
+        },
+        {
+          title: "4. Visit notifications via Discord",
+          body: "The website may send basic visit notifications to an internal Discord channel. These notifications may include the page visited, browser information, IP address, device type, time zone, and an anonymous visitor/session ID.",
+        },
+        {
+          title: "5. How to control cookies",
+          body: "You can delete cookies and local storage at any time through your browser settings. You can also block cookies, but some website features may not work as expected.",
+        },
+        {
+          title: "6. Contact",
+          bodyBeforeEmail:
+            "If you have any questions about cookies or privacy, contact us at ",
+          bodyAfterEmail: ".",
+        },
+      ],
+      disclaimer:
+        "Note: This cookie notice was designed for a simple portfolio/business website. For full legal compliance, review it with a qualified legal professional.",
+    },
+  },
 };
 
 const DICTS: Record<Lang, Dict> = { pt, en };

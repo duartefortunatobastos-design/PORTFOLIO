@@ -24,6 +24,7 @@ import projectPap from "@/assets/project-pap.png";
 import projectPortfolio from "@/assets/project-portfolio.png";
 import projectAsapol from "@/assets/project-asapol.png";
 import sports1 from "@/assets/sports-1.png";
+import { CookieConsent } from "@/components/legal/CookieConsent";
 
 const PROJECT_IMAGES = [projectPap, projectPortfolio, projectAsapol];
 
@@ -70,6 +71,7 @@ export function Portfolio() {
         <Sports />
         <Contact />
         <Footer />
+        <CookieConsent />
       </div>
     </LangProvider>
   );
@@ -209,8 +211,8 @@ function Hero() {
           <FadeIn immediate delay={80} className="shrink-0">
             <img
               src={logo}
-              alt="Duarte Bastos logo"
-              className="mx-auto h-28 w-auto object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] transition-transform duration-700 hover:scale-[1.02] sm:h-36 md:h-44 lg:mx-0 lg:h-52 xl:h-60"
+              alt="DB13 — Duarte Bastos logo"
+              className="mx-auto h-36 w-auto max-w-[min(100%,20rem)] object-contain drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] transition-transform duration-700 hover:scale-[1.02] sm:h-44 md:h-52 lg:mx-0 lg:h-60 xl:h-72"
             />
           </FadeIn>
 
